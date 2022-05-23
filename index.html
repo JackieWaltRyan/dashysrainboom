@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<title>Dashys Rainboom</title>
+		<meta charset="utf-8">
+		<script src="resources/xxtea.js"></script>
+		<script src="resources/pako.min.js"></script>
+		<script src="resources/crc32.js"></script>
+		<script src="resources/vkbeautify.js"></script>
+		<script src="resources/ace/ace.js"></script>
+		<script src="resources/javascript.js"></script>
+		<link rel="stylesheet" type="text/css" href="resources/style.css">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+	</head>
+	<body>
+		<div id='header'><img src="resources/dashy.gif" style="vertical-align:middle;"> Dashys Rainboom</div>
+		<div id='menu'>
+			<b>Вставить gluid:</b>
+			<br><br>
+			<input id='gluid' type='text'>
+			<br><br>
+			<b>Или загрузить файл:</b>
+			<br><br>
+			<input id='glkeyfile' type='file'>
+			<br><br>
+			<input type='button' value='Загрузить' onclick="openglkeyfile()">
+			<br><br>
+			<hr>
+			<br>
+			<b>Файл сохранения:</b>
+			<br><br>
+			<input id='savefile' type='file'>
+			<br><br>
+			<input type='button' value='Загрузить' onclick="opensavefile()"> <input type='button' value='Сохранить' onclick="closesavefile()">
+		</div>
+		<div id='xmlarea'><div id='textfeld'></div></div>
+	</body>
+</html>
