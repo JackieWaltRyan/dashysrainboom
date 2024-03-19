@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+    <head>
+        <title>Dashys Rainboom</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="apple-touch-icon" sizes="57x57" href="resources/images/icons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="resources/images/icons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="resources/images/icons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="resources/images/icons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="resources/images/icons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="resources/images/icons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="resources/images/icons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="resources/images/icons/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="resources/images/icons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="resources/images/icons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="resources/images/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="resources/images/icons/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="resources/images/icons/favicon-16x16.png">
+        <link rel="manifest" href="resources/images/icons/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="resources/images/icons/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <link type="text/css" rel="stylesheet" href="resources/styles/style.css">
+        <script type="text/javascript" src="resources/scripts/ace/ace.js"></script>
+        <script type="text/javascript" src="resources/scripts/ace/ext-language_tools.js"></script>
+        <script type="text/javascript" src="resources/scripts/xxtea.js"></script>
+        <script type="text/javascript" src="resources/scripts/crc32.js"></script>
+        <script type="text/javascript" src="resources/scripts/pako.min.js"></script>
+        <script type="text/javascript" src="resources/scripts/vkbeautify.js"></script>
+        <script type="text/javascript" src="resources/scripts/javascript.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <img src="resources/images/dashy.gif" class="dashy" alt="">
+            <b class="rainbow">Dashys Rainboom</b>
+        </div>
+        <div class="content">
+            <div id="menu">
+                <b class="rainbow">GLUID:</b><br>
+                <div class="block">
+                    <label>
+                    <b class="rainbow">Загрузите файл gameloft_sharing:</b><br>
+                    <input id="glkeyfile" class="button" type="file"><br>
+                    <input class="button" type="button" value="Загрузить" onclick="openglkeyfile()">
+                    </label><br>
+                    <label>
+                        <b class="rainbow">Или вставьте значение data:</b><br>
+                        <div class="button">
+                            <input id="gluid" type="text"/>
+                        </div>
+                    </label>
+                </div>
+                <hr>
+                <b class="rainbow">Файл сохранения:</b><br>
+                <div class="block">
+                    <label>
+                    <b class="rainbow">Загрузите файл mlp_save_prime.dat или mlp_save_prime.xml:</b><br>
+                    <input id="savefile" class="button" type="file"/><br>
+                    <input class="button" type="button" value="Загрузить" onclick="opensavefile()"/>
+                    </label><br>
+                    <label>
+                    <b class="rainbow">Или сохраните текст редактора в файл mlp_save_prime.dat:</b><br>
+                    <input class="button" type="button" value="Сохранить" onclick="closesavefile()"/>
+                    </label>
+                </div>
+                <hr>
+                <b class="rainbow">Редактор:</b><br>
+                <div class="block">
+                    <input class="button" type="button" value="Форматировать текст" onclick="acebeautify()"/><br>
+                    <input class="button" type="button" value="Свернуть всё" onclick="acefold(true)"/> 
+                    <input class="button" type="button" value="Развернуть всё" onclick="acefold(false)"/><br>
+                    <input class="button" type="button" value="Полноэкранный режим" onclick="acefullscreen()"/><br>
+                    <label class="acewrap">
+                    <input id="acewrap" type="checkbox" onchange="acewrap()"/> Перенос строк
+                    </label>
+                </div>
+                <hr>
+            </div>
+            <div class="xmlarea">
+                <div id="textfeld"></div>
+            </div>
+        </div>
+    </body>
+    <script>
+        vkBridge.send("VKWebAppInit", {});
+    </script>
+</html>

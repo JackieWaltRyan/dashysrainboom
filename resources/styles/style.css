@@ -1,0 +1,172 @@
+@font-face {
+  font-family: celestia;
+  src: local("celestia medium redux");
+  src: url("/resources/fonts/celestia.eot") format("eot");
+  src: url("/resources/fonts/celestia.otf") format("otf");
+  src: url("/resources/fonts/celestia.svg") format("svg");
+  src: url("/resources/fonts/celestia.ttf") format("truetype");
+  src: url("/resources/fonts/celestia.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: celestia, serif;
+  font-size: 18px;
+  background-color: #02162e;
+}
+
+.header {
+  background-color: #9edbf9;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.dashy {
+  vertical-align: middle;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 50px);
+}
+
+#menu {
+  background-color: #02162e;
+  width: 360px;
+  color: white;
+  padding-top: 10px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.block {
+  margin-left: 25px;
+}
+
+#gluid {
+  width: 245px;
+}
+
+.xmlarea {
+  background-color: #9edbf9;
+  position: relative;
+  min-width: 360px;
+  min-height: 550px;
+  width: calc(100% - 360px);
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#textfeld {
+  position: absolute;
+  left: 2px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  resize: none;
+}
+
+hr {
+  border-color: #9edbf9;
+  margin-top: 20px;
+  margin-left: -10px;
+}
+
+.rainbow {
+  background: linear-gradient(
+    to right,
+    #672f89,
+    #1e98d3,
+    #62bc4d,
+    #fdf6af,
+    #f37033,
+    #ee4144
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.acewrap:hover {
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  background-size: 400%;
+  animation: glowing 20s linear infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.button {
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  color: #000;
+  background: #9edbf9;
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 5px 0;
+  width: min-content;
+}
+
+.button:hover {
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  background-size: 400%;
+  animation: glowing 20s linear infinite;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 720px) {
+  #menu {
+    width: 100%;
+  }
+
+  .xmlarea {
+    width: 100%;
+  }
+}
