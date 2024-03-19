@@ -13,7 +13,7 @@
         <link rel="apple-touch-icon" sizes="144x144" href="resources/images/icons/apple-icon-144x144.png">
         <link rel="apple-touch-icon" sizes="152x152" href="resources/images/icons/apple-icon-152x152.png">
         <link rel="apple-touch-icon" sizes="180x180" href="resources/images/icons/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192"  href="resources/images/icons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="resources/images/icons/android-icon-192x192.png">
         <link rel="icon" type="image/png" sizes="32x32" href="resources/images/icons/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="resources/images/icons/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="resources/images/icons/favicon-16x16.png">
@@ -41,9 +41,9 @@
                 <b class="rainbow">GLUID:</b><br>
                 <div class="block">
                     <label>
-                    <b class="rainbow">Загрузите файл gameloft_sharing:</b><br>
-                    <input id="glkeyfile" class="button" type="file"><br>
-                    <input class="button" type="button" value="Загрузить" onclick="openglkeyfile()">
+                        <b class="rainbow">Загрузите файл gameloft_sharing:</b><br>
+                        <input id="glkeyfile" class="button" type="file"><br>
+                        <input class="button" type="button" value="Загрузить" onclick="openglkeyfile()">
                     </label><br>
                     <label>
                         <b class="rainbow">Или вставьте значение data:</b><br>
@@ -51,21 +51,19 @@
                             <input id="gluid" type="text"/>
                         </div>
                     </label>
-                </div>
-                <hr>
+                </div><hr>
                 <b class="rainbow">Файл сохранения:</b><br>
                 <div class="block">
                     <label>
-                    <b class="rainbow">Загрузите файл mlp_save_prime.dat или mlp_save_prime.xml:</b><br>
-                    <input id="savefile" class="button" type="file"/><br>
-                    <input class="button" type="button" value="Загрузить" onclick="opensavefile()"/>
+                        <b class="rainbow">Загрузите файл mlp_save_prime.dat или mlp_save_prime.xml:</b><br>
+                        <input id="savefile" class="button" type="file"/><br>
+                        <input class="button" type="button" value="Загрузить" onclick="opensavefile()"/>
                     </label><br>
                     <label>
-                    <b class="rainbow">Или сохраните текст редактора в файл mlp_save_prime.dat:</b><br>
-                    <input class="button" type="button" value="Сохранить" onclick="closesavefile()"/>
+                        <b class="rainbow">Или сохраните текст редактора в файл mlp_save_prime.dat:</b><br>
+                        <input class="button" type="button" value="Сохранить" onclick="closesavefile()"/>
                     </label>
-                </div>
-                <hr>
+                </div><hr>
                 <b class="rainbow">Редактор:</b><br>
                 <div class="block">
                     <input class="button" type="button" value="Форматировать текст" onclick="acebeautify()"/><br>
@@ -73,10 +71,9 @@
                     <input class="button" type="button" value="Развернуть всё" onclick="acefold(false)"/><br>
                     <input class="button" type="button" value="Полноэкранный режим" onclick="acefullscreen()"/><br>
                     <label class="acewrap">
-                    <input id="acewrap" type="checkbox" onchange="acewrap()"/> Перенос строк
+                        <input id="acewrap" type="checkbox" onchange="acewrap()"/> Перенос строк
                     </label>
-                </div>
-                <hr>
+                </div><hr>
             </div>
             <div class="xmlarea">
                 <div id="textfeld"></div>
