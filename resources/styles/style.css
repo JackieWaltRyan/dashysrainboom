@@ -55,6 +55,8 @@ body {
 }
 
 #gluid {
+    vertical-align: top;
+    margin: 0;
     width: 245px;
 }
 
@@ -91,6 +93,10 @@ hr {
     -webkit-text-fill-color: transparent;
 }
 
+.acewrap {
+    display: flex;
+}
+
 .acewrap:hover {
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     background-size: 400%;
@@ -99,6 +105,10 @@ hr {
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
+}
+
+#acewrap {
+    height: -webkit-fill-available;
 }
 
 .button {
