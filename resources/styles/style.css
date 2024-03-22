@@ -95,6 +95,7 @@ hr {
 
 .acewrap {
     display: flex;
+    line-height: 20px;
 }
 
 .acewrap:hover {
@@ -109,6 +110,7 @@ hr {
 
 #acewrap {
     height: -webkit-fill-available;
+    margin-right: 10px;
 }
 
 .button {
