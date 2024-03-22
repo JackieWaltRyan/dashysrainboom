@@ -96,6 +96,10 @@ hr {
 .acewrap {
     display: flex;
     line-height: 20px;
+    padding: 5px 0;
+    cursor: pointer;
+    width: min-content;
+    white-space: nowrap;
 }
 
 .acewrap:hover {
