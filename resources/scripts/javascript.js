@@ -56,8 +56,7 @@ if (document.readyState === "loading") {
 		aceresize();
 		
 		setTimeout(() => {
-			event.preventDefault();
-			event.returnValue = "";
+			aceresize();
 		}, 1);
 	});
 } else {
