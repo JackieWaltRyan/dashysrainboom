@@ -1,4 +1,9 @@
 function init() {
+	window.addEventListener("beforeunload", (event) => {
+		event.preventDefault();
+		event.returnValue = "";
+	});
+
 	ace.require("ace/ext/language_tools");
 	ace.require("ace/ext/inline_autocomplete");
 	ace.require("ace/ext/searchbox");
@@ -37,17 +42,11 @@ function init() {
 }
 
 function aceresize() {
-	let scrollHeight = (Math.max(document.body.scrollHeight,
-								document.documentElement.scrollHeight,
-								document.body.offsetHeight,
-								document.documentElement.offsetHeight,
-								document.body.clientHeight,
-								document.documentElement.clientHeight) - 50);
-	
-	var xmlarea = document.getElementById("xmlarea");
+	var menu = document.getElementById("menu");
+	var xmlarea = document.querySelector(".xmlarea");
 
-	if (xmlarea.scrollHeight < scrollHeight) {
-		xmlarea.style.minHeight = (scrollHeight + "px");
+	if (xmlarea.scrollHeight < menu.scrollHeight) {
+		xmlarea.style.minHeight = (menu.scrollHeight + "px");
 	}
 }
 
@@ -55,6 +54,11 @@ if (document.readyState === "loading") {
 	document.addEventListener("DOMContentLoaded", () => {
 		init();
 		aceresize();
+		
+		setTimeout(() => {
+			event.preventDefault();
+			event.returnValue = "";
+		}, 1);
 	});
 } else {
 	init();
