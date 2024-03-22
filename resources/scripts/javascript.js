@@ -308,7 +308,7 @@ function acewrap() {
 }
 
 function acefullscreen() {
-	var textfeld = document.getElementById("textfeld");
+	var textfeld = document.querySelector(".xmlarea");
 	
 	if (textfeld.requestFullscreen) {
             textfeld.requestFullscreen();
