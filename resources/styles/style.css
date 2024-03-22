@@ -102,6 +102,7 @@ hr {
     white-space: nowrap;
     border-radius: 10px;
     user-select: none;
+    margin-right: 10px;
 }
 
 .acewrap:hover {
@@ -117,7 +118,6 @@ hr {
 #acewrap {
     height: -webkit-fill-available;
     margin-right: 10px;
-    margin-left: 10px;
 }
 
 .button {
