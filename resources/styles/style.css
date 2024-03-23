@@ -54,9 +54,11 @@ body {
     margin-left: 25px;
 }
 
+.gluid {
+    display: flex;
+}
+
 #gluid {
-    vertical-align: top;
-    margin: 0;
     width: 245px;
 }
 
@@ -94,13 +96,9 @@ hr {
 }
 
 .acewrap {
-    display: flex;
-    line-height: 20px;
     padding: 5px 0;
     cursor: pointer;
-    width: min-content;
     white-space: nowrap;
-    border-radius: 10px;
     user-select: none;
 }
 
@@ -116,7 +114,6 @@ hr {
 
 #acewrap {
     height: -webkit-fill-available;
-    margin-right: 10px;
 }
 
 .button {
