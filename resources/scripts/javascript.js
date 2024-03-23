@@ -1,71 +1,71 @@
 function init() {
-	window.addEventListener("beforeunload", (event) => {
-		event.preventDefault();
-		event.returnValue = "";
-	});
+    window.addEventListener("beforeunload", (event) => {
+        event.preventDefault();
+        event.returnValue = "";
+    });
 
-	ace.require("ace/ext/language_tools");
-	ace.require("ace/ext/inline_autocomplete");
-	ace.require("ace/ext/searchbox");
-	
+    ace.require("ace/ext/language_tools");
+    ace.require("ace/ext/inline_autocomplete");
+    ace.require("ace/ext/searchbox");
+    
     var editor = ace.edit("textfeld");
     editor.$blockScrolling = Infinity;
-	
-	editor.setOptions({
-		mode: "ace/mode/xml",
-		theme: "ace/theme/cobalt",
-		showPrintMargin: false,
-		enableSnippets: true,
-		enableBasicAutocompletion: true,
-		enableInlineAutocompletion: true,
+    
+    editor.setOptions({
+        mode: "ace/mode/xml",
+        theme: "ace/theme/cobalt",
+        showPrintMargin: false,
+        enableSnippets: true,
+        enableBasicAutocompletion: true,
+        enableInlineAutocompletion: true,
         enableLiveAutocompletion: true,
-		customScrollbar: true,
-		enableMultiselect: true,
-		enableAutoIndent: true
-	});
+        customScrollbar: true,
+        enableMultiselect: true,
+        enableAutoIndent: true
+    });
 
-	var ace_wrap = document.getElementById("acewrap");
+    var ace_wrap = document.getElementById("acewrap");
 
-	if (!localStorage.getItem("acewrap")) {
-		localStorage.setItem("acewrap", "true");
-	}
+    if (!localStorage.getItem("acewrap")) {
+        localStorage.setItem("acewrap", "true");
+    }
 
-	if (localStorage.getItem("acewrap") === "true") {
-		ace_wrap.checked = true;
-		editor.getSession().setUseWrapMode(true);
-	}
+    if (localStorage.getItem("acewrap") === "true") {
+        ace_wrap.checked = true;
+        editor.getSession().setUseWrapMode(true);
+    }
 
-	if (localStorage.getItem("acewrap") === "false") {
-		ace_wrap.checked = false;
-		editor.getSession().setUseWrapMode(false);
-	}
+    if (localStorage.getItem("acewrap") === "false") {
+        ace_wrap.checked = false;
+        editor.getSession().setUseWrapMode(false);
+    }
 }
 
 function aceresize() {
-	var menu = document.getElementById("menu");
-	var xmlarea = document.querySelector(".xmlarea");
+    var menu = document.getElementById("menu");
+    var xmlarea = document.querySelector(".xmlarea");
 
-	if (xmlarea.scrollHeight < menu.scrollHeight) {
-		xmlarea.style.minHeight = (menu.scrollHeight + "px");
-	}
+    if (xmlarea.scrollHeight < menu.scrollHeight) {
+        xmlarea.style.minHeight = (menu.scrollHeight + "px");
+    }
 }
 
 if (document.readyState === "loading") {
-	document.addEventListener("DOMContentLoaded", () => {
-		init();
-		aceresize();
-		
-		setTimeout(() => {
-			aceresize();
-		}, 1);
-	});
+    document.addEventListener("DOMContentLoaded", () => {
+        init();
+        aceresize();
+        
+        setTimeout(() => {
+            aceresize();
+        }, 1);
+    });
 } else {
-	init();
-	aceresize();
+    init();
+    aceresize();
 }
 
 window.addEventListener("resize", () => {
-	aceresize();
+    aceresize();
 });
 
 function xmlclean(data) {
@@ -191,20 +191,20 @@ function closesavefile() {
         return;
     }
     next(function () {
-		try {
-			var key = convertB64ToBinary(gluid);
-			var savecount = 25;
-			var editor = ace.edit("textfeld");
-			var savecontent = editor.getSession().getValue();
-			var savecountpart = savecontent2(savecount);
-			savecountpart = savecontent3(savecountpart, key);
-			var savecontentpart = savecontent1(savecontent);
-			savecontentpart = savecontent3(savecontentpart, key);
-			var sections = savecontent2(2);
-			download([savecountpart, savecontentpart, sections], "mlp_save_prime.dat");
-		} catch (e) {
-			error(e, "Ошибка сохранения игры, может недопустимые символы?");
-		}
+        try {
+            var key = convertB64ToBinary(gluid);
+            var savecount = 25;
+            var editor = ace.edit("textfeld");
+            var savecontent = editor.getSession().getValue();
+            var savecountpart = savecontent2(savecount);
+            savecountpart = savecontent3(savecountpart, key);
+            var savecontentpart = savecontent1(savecontent);
+            savecontentpart = savecontent3(savecontentpart, key);
+            var sections = savecontent2(2);
+            download([savecountpart, savecontentpart, sections], "mlp_save_prime.dat");
+        } catch (e) {
+            error(e, "Ошибка сохранения игры, может недопустимые символы?");
+        }
     });
 }
 
@@ -214,23 +214,23 @@ function opensavefile() {
         alert("Файл не выбран!");
         return;
     }
-	if (input["type"] == "text/xml") {
-		var reader = new FileReader();
-		reader.onload = function () {
-			next(function () {
-				var data = reader.result;
-				data = vkbeautify.xml(data);
-				var editor = ace.edit("textfeld");
-				editor.getSession().setValue(data);
-				acefold(true);
-				next(function () {
-					alert("Данные загружены!\n\nНе забывайте делать резервные копии!");
-				});
-			});
-		};
-		reader.readAsText(input);
-		return;
-	}
+    if (input["type"] == "text/xml") {
+        var reader = new FileReader();
+        reader.onload = function () {
+            next(function () {
+                var data = reader.result;
+                data = vkbeautify.xml(data);
+                var editor = ace.edit("textfeld");
+                editor.getSession().setValue(data);
+                acefold(true);
+                next(function () {
+                    alert("Данные загружены!\n\nНе забывайте делать резервные копии!");
+                });
+            });
+        };
+        reader.readAsText(input);
+        return;
+    }
     var gluid = document.getElementById("gluid").value;
     if (gluid.length == 0) {
         alert("Пожалуйста, введите ключ!");
@@ -239,38 +239,38 @@ function opensavefile() {
     var reader = new FileReader();
     reader.onload = function () {
         next(function () {
-			try {
-				var key = convertB64ToBinary(gluid);
-				var buffer = reader.result;
-				var savegame = new DataView(buffer);
-				var size = savegame.getUint32(0, true);
-				var compressed_size = savegame.getUint32(4, true);
-				var encryptedsize = savegame.getUint32(8, true);
-				var data = new Uint8Array(buffer, 12, encryptedsize);
-				data = xxtea.decrypt(data, key);
-				data = pako.inflate(data);
-				var savecount = new DataView(data.buffer).getUint32(0, true);
-				var offset = 12 + encryptedsize;
-				var size = savegame.getUint32(offset + 0, true);
-				var compressed_size = savegame.getUint32(offset + 4, true);
-				var encryptedsize = savegame.getUint32(offset + 8, true);
-				var data = new Uint8Array(buffer, offset + 12, encryptedsize);
-				data = xxtea.decrypt(data, key);
-				data = pako.inflate(data);
-				data = new Uint8Array(data.buffer, 16);
-				data = pako.inflate(data);
-				data = new TextDecoder().decode(data);
-				data = xmlclean(data);
-				data = vkbeautify.xml(data);
-				var editor = ace.edit("textfeld");
-				editor.getSession().setValue(data);
-				acefold(true);
-				next(function () {
-					alert("Данные загружены!\n\nНе забывайте делать резервные копии!");
-				});
-			} catch (e) {
-				error(e, "Ошибка загрузки сохранения!\n\nВозможно, неправильный файл / поврежденный файл / неверный ключ?");
-			};
+            try {
+                var key = convertB64ToBinary(gluid);
+                var buffer = reader.result;
+                var savegame = new DataView(buffer);
+                var size = savegame.getUint32(0, true);
+                var compressed_size = savegame.getUint32(4, true);
+                var encryptedsize = savegame.getUint32(8, true);
+                var data = new Uint8Array(buffer, 12, encryptedsize);
+                data = xxtea.decrypt(data, key);
+                data = pako.inflate(data);
+                var savecount = new DataView(data.buffer).getUint32(0, true);
+                var offset = 12 + encryptedsize;
+                var size = savegame.getUint32(offset + 0, true);
+                var compressed_size = savegame.getUint32(offset + 4, true);
+                var encryptedsize = savegame.getUint32(offset + 8, true);
+                var data = new Uint8Array(buffer, offset + 12, encryptedsize);
+                data = xxtea.decrypt(data, key);
+                data = pako.inflate(data);
+                data = new Uint8Array(data.buffer, 16);
+                data = pako.inflate(data);
+                data = new TextDecoder().decode(data);
+                data = xmlclean(data);
+                data = vkbeautify.xml(data);
+                var editor = ace.edit("textfeld");
+                editor.getSession().setValue(data);
+                acefold(true);
+                next(function () {
+                    alert("Данные загружены!\n\nНе забывайте делать резервные копии!");
+                });
+            } catch (e) {
+                error(e, "Ошибка загрузки сохранения!\n\nВозможно, неправильный файл / поврежденный файл / неверный ключ?");
+            };
         });
     };
     reader.readAsArrayBuffer(input);
@@ -279,38 +279,38 @@ function opensavefile() {
 function acebeautify() {
     var editor = ace.edit("textfeld");
     var data = editor.getSession().getValue();
-	
+    
     data = vkbeautify.xml(data);
     editor.getSession().setValue(data);
-	
-	acefold(true);
+    
+    acefold(true);
 }
 
 function acewrap() {
-	var editor = ace.edit("textfeld");
-	var ace_wrap = document.getElementById("acewrap");
+    var editor = ace.edit("textfeld");
+    var ace_wrap = document.getElementById("acewrap");
 
-	if (localStorage.getItem("acewrap") === "true") {
-		ace_wrap.checked = false;
-		editor.getSession().setUseWrapMode(false);
-		localStorage.setItem("acewrap", "false");
+    if (localStorage.getItem("acewrap") === "true") {
+        ace_wrap.checked = false;
+        editor.getSession().setUseWrapMode(false);
+        localStorage.setItem("acewrap", "false");
 
-		return false;
-	}
+        return false;
+    }
 
-	if (!localStorage.getItem("acewrap") || (localStorage.getItem("acewrap") === "false")) {
-		ace_wrap.checked = true;
-		editor.getSession().setUseWrapMode(true);
-		localStorage.setItem("acewrap", "true");
+    if (!localStorage.getItem("acewrap") || (localStorage.getItem("acewrap") === "false")) {
+        ace_wrap.checked = true;
+        editor.getSession().setUseWrapMode(true);
+        localStorage.setItem("acewrap", "true");
 
-		return true;
-	}
+        return true;
+    }
 }
 
 function acefullscreen() {
-	var textfeld = document.getElementById("textfeld");
-	
-	if (textfeld.requestFullscreen) {
+    var textfeld = document.getElementById("textfeld");
+    
+    if (textfeld.requestFullscreen) {
             textfeld.requestFullscreen();
         } else if (textfeld.mozRequestFullScreen) {
             textfeld.mozRequestFullScreen();
@@ -322,5 +322,5 @@ function acefullscreen() {
             if (textfeld.webkitEnterFullscreen) {
                 textfeld.webkitEnterFullscreen();
             }
-	}
+    }
 }
