@@ -2,7 +2,10 @@
 
 My modified (lightweight and Russified) version of the [save editor](https://www.reddit.com/r/MLPIOS/comments/2v3s8v/dashys_rainboom_android_mlp_savegame_editor/) of the same name for the My Little Pony mobile game.
 
-Online: [Dashys Rainboom](https://jackiewaltryan.github.io/dashysrainboom/)
+Online GH: [Dashys Rainboom](https://jackiewaltryan.github.io/dashysrainboom)<br>
+Online CF: [Dashys Rainboom](https://dashysrainboom.pages.dev)<br>
+ВКонтакте App: [Dashys Rainboom](https://vk.com/app51879230_225697929)<br>
+Telegram Bot: [Dashys Rainboom](https://t.me/DashysRainboomBot)
 
 ### License
 
