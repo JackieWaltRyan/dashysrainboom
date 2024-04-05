@@ -54,10 +54,6 @@ if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
         init();
         aceresize();
-        
-        setTimeout(() => {
-            aceresize();
-        }, 1);
     });
 } else {
     init();
@@ -65,6 +61,10 @@ if (document.readyState === "loading") {
 }
 
 window.addEventListener("resize", () => {
+    aceresize();
+});
+
+window.addEventListener("scroll", () => {
     aceresize();
 });
 
