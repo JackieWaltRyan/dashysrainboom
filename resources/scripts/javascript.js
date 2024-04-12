@@ -179,9 +179,9 @@ function openglkeyfile() {
 
             document.getElementById("gluid").value = match[1];
 
-            message("info", "Ключ успешно загружен!");
+            message("info", "GLUID успешно загружен!");
         } catch {
-            message("error", "Ошибка загрузки ключа, может, не тот файл?");
+            message("error", "Ошибка загрузки GLUID, может, не тот файл?");
         }
     });
 
@@ -260,7 +260,7 @@ function closesavefile() {
     let gluid = document.getElementById("gluid").value;
 
     if (gluid.length === 0) {
-        message("alert", "Пожалуйста, введите ключ!");
+        message("alert", "Пожалуйста, введите GLUID!");
 
         return;
     }
@@ -284,7 +284,7 @@ function closesavefile() {
 
         message("info", "Файл успешно сохранен!");
     } catch {
-        message("error", "Ошибка сохранения игры, может, недопустимые символы?");
+        message("error", "Ошибка сохранения файла, может, недопустимые символы?");
     }
 }
 
@@ -326,7 +326,7 @@ function opensavefile() {
     let gluid = document.getElementById("gluid").value;
 
     if (gluid.length === 0) {
-        message("alert", "Пожалуйста, введите ключ!");
+        message("alert", "Пожалуйста, введите GLUID!");
 
         return;
     }
