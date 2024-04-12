@@ -168,9 +168,8 @@ hr {
     z-index: 1000;
     position: fixed;
     width: 100%;
-    height: calc(100% - 50px);
     pointer-events: none;
-    overflow: hidden;
+    user-select: none;
 }
 
 .message {
@@ -181,6 +180,8 @@ hr {
     margin-left: 25px;
     margin-right: 25px;
     text-align: center;
+    pointer-events: none;
+    user-select: none;
 }
 
 .message_info {
