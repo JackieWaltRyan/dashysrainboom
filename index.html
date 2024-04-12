@@ -34,7 +34,7 @@
     </head>
     <body>
         <div class="header">
-            <img src="resources/images/dashy.gif" class="dashy" alt="">
+            <img class="dashy" src="resources/images/dashy.gif" alt="Dashys Rainboom">
             <b class="rainbow">Dashys Rainboom</b>
         </div>
         <div class="content">
@@ -52,7 +52,8 @@
                             <input id="gluid" type="text"/>
                         </div>
                     </label>
-                </div><hr>
+                </div>
+                <hr>
                 <b class="rainbow">Файл сохранения:</b><br>
                 <div class="block">
                     <label>
@@ -64,22 +65,26 @@
                         <b class="rainbow">Или сохраните текст редактора в файл mlp_save_prime.dat:</b><br>
                         <input class="button" type="button" value="Сохранить" onclick="closesavefile()"/>
                     </label>
-                </div><hr>
+                </div>
+                <hr>
                 <b class="rainbow">Редактор:</b><br>
                 <div class="block">
                     <input class="button" type="button" value="Форматировать текст" onclick="acebeautify()"/><br>
-                    <input class="button" type="button" value="Свернуть всё" onclick="acefold(true)"/> 
+                    <input class="button" type="button" value="Свернуть всё" onclick="acefold(true)"/>
                     <input class="button" type="button" value="Развернуть всё" onclick="acefold(false)"/><br>
                     <input class="button" type="button" value="Полноэкранный режим" onclick="acefullscreen()"/><br>
                     <label class="acewrap">
-                        <input id="acewrap" type="checkbox" onchange="acewrap()"/> Перенос строк
+                        <input id="acewrap" type="checkbox" onchange="acewrap()"/>
+                        <span>Перенос строк</span>
                     </label>
-                </div><hr>
+                </div>
+                <hr>
             </div>
             <div class="xmlarea">
                 <div id="textfeld"></div>
             </div>
         </div>
+        <div id="message_box"></div>
     </body>
     <script>
         vkBridge.send("VKWebAppInit", {});
