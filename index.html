@@ -46,9 +46,9 @@
                         <input id="glkeyfile" class="button" type="file"/><br>
                         <input id="openglkeyfile" class="button" type="button" value="Загрузить"/>
                         <script>
-                            let input = document.getElementById("openglkeyfile");
+                            let input_openglkeyfile = document.getElementById("openglkeyfile");
                             
-                            input.addEventListener("click", () => {
+                            input_openglkeyfile.addEventListener("click", () => {
                                 openglkeyfile();
                             });
                         </script>
@@ -67,9 +67,9 @@
                         <input id="savefile" class="button" type="file"/><br>
                         <input id="opensavefile" class="button" type="button" value="Загрузить"/>
                         <script>
-                            let input = document.getElementById("opensavefile");
+                            let input_opensavefile = document.getElementById("opensavefile");
                             
-                            input.addEventListener("click", () => {
+                            input_opensavefile.addEventListener("click", () => {
                                 opensavefile();
                             });
                         </script>
@@ -78,9 +78,9 @@
                         <b class="rainbow">Или сохраните текст редактора в файл mlp_save_prime.dat:</b><br>
                         <input id="closesavefile" class="button" type="button" value="Сохранить"/>
                         <script>
-                            let input = document.getElementById("closesavefile");
+                            let input_closesavefile = document.getElementById("closesavefile");
                             
-                            input.addEventListener("click", () => {
+                            input_closesavefile.addEventListener("click", () => {
                                 closesavefile();
                             });
                         </script>
@@ -90,42 +90,42 @@
                 <div class="block">
                     <input id="acebeautify" class="button" type="button" value="Форматировать текст"/><br>
                     <script>
-                        let input = document.getElementById("acebeautify");
+                        let input_acebeautify = document.getElementById("acebeautify");
                         
-                        input.addEventListener("click", () => {
+                        input_acebeautify.addEventListener("click", () => {
                             acebeautify();
                         });
                     </script>
                     <input id="acefoldtrue" class="button" type="button" value="Свернуть всё"/>
                     <script>
-                        let input = document.getElementById("acefoldtrue");
+                        let input_acefoldtrue = document.getElementById("acefoldtrue");
                         
-                        input.addEventListener("click", () => {
+                        input_acefoldtrue.addEventListener("click", () => {
                             acefold(true);
                         });
                     </script>
                     <input id="acefoldfalse" class="button" type="button" value="Развернуть всё"/><br>
                     <script>
-                        let input = document.getElementById("acefoldfalse");
+                        let input_acefoldfalse = document.getElementById("acefoldfalse");
                         
-                        input.addEventListener("click", () => {
+                        input_acefoldfalse.addEventListener("click", () => {
                             acefold(false);
                         });
                     </script>
                     <input id="acefullscreen" class="button" type="button" value="Полноэкранный режим"/><br>
                     <script>
-                        let input = document.getElementById("acefullscreen");
+                        let input_acefullscreen = document.getElementById("acefullscreen");
                         
-                        input.addEventListener("click", () => {
+                        input_acefullscreen.addEventListener("click", () => {
                             acefullscreen();
                         });
                     </script>
                     <label class="acewrap">
                         <input id="acewrap" type="checkbox"/>
                         <script>
-                            let input = document.getElementById("acewrap");
+                            let input_acewrap = document.getElementById("acewrap");
                             
-                            input.addEventListener("change", () => {
+                            input_acewrap.addEventListener("change", () => {
                                 acewrap();
                             });
                         </script>
