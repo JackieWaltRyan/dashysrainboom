@@ -34,7 +34,7 @@
     </head>
     <body>
         <div class="header">
-            <img class="dashy" src="resources/images/dashy.gif" alt="Dashys Rainboom">
+            <img class="dashy" src="resources/images/dashy.gif" alt="Dashys Rainboom"/>
             <b class="rainbow">Dashys Rainboom</b>
         </div>
         <div class="content">
@@ -43,8 +43,15 @@
                 <div class="block">
                     <label>
                         <b class="rainbow">Загрузите файл gameloft_sharing:</b><br>
-                        <input id="glkeyfile" class="button" type="file"><br>
-                        <input class="button" type="button" value="Загрузить" onclick="openglkeyfile()">
+                        <input id="glkeyfile" class="button" type="file"/><br>
+                        <input id="openglkeyfile" class="button" type="button" value="Загрузить"/>
+                        <script>
+                            let input = document.getElementById("openglkeyfile");
+                            
+                            input.addEventListener("click", () => {
+                                openglkeyfile();
+                            });
+                        </script>
                     </label><br>
                     <label>
                         <b class="rainbow">Или вставьте значение data:</b><br>
@@ -52,33 +59,79 @@
                             <input id="gluid" type="text"/>
                         </div>
                     </label>
-                </div>
-                <hr>
+                </div><hr>
                 <b class="rainbow">Файл сохранения:</b><br>
                 <div class="block">
                     <label>
                         <b class="rainbow">Загрузите файл mlp_save_prime.dat или mlp_save_prime.xml:</b><br>
                         <input id="savefile" class="button" type="file"/><br>
-                        <input class="button" type="button" value="Загрузить" onclick="opensavefile()"/>
+                        <input id="opensavefile" class="button" type="button" value="Загрузить"/>
+                        <script>
+                            let input = document.getElementById("opensavefile");
+                            
+                            input.addEventListener("click", () => {
+                                opensavefile();
+                            });
+                        </script>
                     </label><br>
                     <label>
                         <b class="rainbow">Или сохраните текст редактора в файл mlp_save_prime.dat:</b><br>
-                        <input class="button" type="button" value="Сохранить" onclick="closesavefile()"/>
+                        <input id="closesavefile" class="button" type="button" value="Сохранить"/>
+                        <script>
+                            let input = document.getElementById("closesavefile");
+                            
+                            input.addEventListener("click", () => {
+                                closesavefile();
+                            });
+                        </script>
                     </label>
-                </div>
-                <hr>
+                </div><hr>
                 <b class="rainbow">Редактор:</b><br>
                 <div class="block">
-                    <input class="button" type="button" value="Форматировать текст" onclick="acebeautify()"/><br>
-                    <input class="button" type="button" value="Свернуть всё" onclick="acefold(true)"/>
-                    <input class="button" type="button" value="Развернуть всё" onclick="acefold(false)"/><br>
-                    <input class="button" type="button" value="Полноэкранный режим" onclick="acefullscreen()"/><br>
+                    <input id="acebeautify" class="button" type="button" value="Форматировать текст"/><br>
+                    <script>
+                        let input = document.getElementById("acebeautify");
+                        
+                        input.addEventListener("click", () => {
+                            acebeautify();
+                        });
+                    </script>
+                    <input id="acefoldtrue" class="button" type="button" value="Свернуть всё"/>
+                    <script>
+                        let input = document.getElementById("acefoldtrue");
+                        
+                        input.addEventListener("click", () => {
+                            acefold(true);
+                        });
+                    </script>
+                    <input id="acefoldfalse" class="button" type="button" value="Развернуть всё"/><br>
+                    <script>
+                        let input = document.getElementById("acefoldfalse");
+                        
+                        input.addEventListener("click", () => {
+                            acefold(false);
+                        });
+                    </script>
+                    <input id="acefullscreen" class="button" type="button" value="Полноэкранный режим"/><br>
+                    <script>
+                        let input = document.getElementById("acefullscreen");
+                        
+                        input.addEventListener("click", () => {
+                            acefullscreen();
+                        });
+                    </script>
                     <label class="acewrap">
-                        <input id="acewrap" type="checkbox" onchange="acewrap()"/>
+                        <input id="acewrap" type="checkbox"/>
+                        <script>
+                            let input = document.getElementById("acewrap");
+                            
+                            input.addEventListener("change", () => {
+                                acewrap();
+                            });
+                        </script>
                         <span>Перенос строк</span>
                     </label>
-                </div>
-                <hr>
+                </div><hr>
             </div>
             <div class="xmlarea">
                 <div id="textfeld"></div>
