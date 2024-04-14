@@ -15,19 +15,19 @@ function createElement(tag, params = {}, actions = () => {
     return el;
 }
 
-function message(type, text) {
-    let box = document.getElementById("message_box");
+function createMessage(type, text) {
+    let messages = document.getElementById("messages");
 
-    let mess = createElement("div", {
-        class: ("message message_" + type)
+    let message = createElement("div", {
+        class: ("messages_message messages_message_" + type)
     }, (el) => {
         el.innerText = text;
     });
 
-    box.appendChild(mess);
+    messages.appendChild(message);
 
     setTimeout(() => {
-        mess.remove();
+        message.remove();
     }, 3000);
 }
 
@@ -36,7 +36,7 @@ function init() {
     ace.require("ace/ext/inline_autocomplete");
     ace.require("ace/ext/searchbox");
 
-    let editor = ace.edit("textfeld");
+    let editor = ace.edit("content_xmlarea_textfeld");
 
     editor.$blockScrolling = Infinity;
 
@@ -53,32 +53,32 @@ function init() {
         enableAutoIndent: true
     });
 
-    let ace_wrap = document.getElementById("acewrap");
+    let content_menu_block_acewrap = document.getElementById("content_menu_block_acewrap");
 
-    if (!localStorage.getItem("acewrap")) {
-        localStorage.setItem("acewrap", "true");
+    if (!localStorage.getItem("aceWrap")) {
+        localStorage.setItem("aceWrap", "true");
     }
 
-    if (localStorage.getItem("acewrap") === "true") {
-        ace_wrap.checked = true;
+    if (localStorage.getItem("aceWrap") === "true") {
+        content_menu_block_acewrap.checked = true;
         editor.getSession().setUseWrapMode(true);
     }
 
-    if (localStorage.getItem("acewrap") === "false") {
-        ace_wrap.checked = false;
+    if (localStorage.getItem("aceWrap") === "false") {
+        content_menu_block_acewrap.checked = false;
         editor.getSession().setUseWrapMode(false);
     }
 }
 
-function aceresize() {
-    let menu = document.getElementById("menu");
-    let xmlarea = document.querySelector(".xmlarea");
+function aceResize() {
+    let content_menu = document.getElementById("content_menu");
+    let content_xmlarea = document.querySelector(".content_xmlarea");
 
-    if (xmlarea.scrollHeight < menu.scrollHeight) {
-        xmlarea.style.minHeight = (menu.scrollHeight + "px");
+    if (content_xmlarea.scrollHeight < content_menu.scrollHeight) {
+        content_xmlarea.style.minHeight = (content_menu.scrollHeight + "px");
     }
 
-    xmlarea.addEventListener("keyup", () => {
+    content_xmlarea.addEventListener("keyup", () => {
         window.addEventListener("beforeunload", (event) => {
             event.preventDefault();
             event.returnValue = "";
@@ -89,22 +89,22 @@ function aceresize() {
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
         init();
-        aceresize();
+        aceResize();
     });
 } else {
     init();
-    aceresize();
+    aceResize();
 }
 
 window.addEventListener("resize", () => {
-    aceresize();
+    aceResize();
 });
 
 window.addEventListener("scroll", () => {
-    aceresize();
+    aceResize();
 });
 
-function xmlclean(data) {
+function xmlClean(data) {
     data = data.replace(/<IapMap>[^]+<\/IapMap>/gim, "<IapMap/>");
     data = data.replace(/<([\w()]+)((?:\s+[\w()]+="[^"]*(?:"\$[^"]*"[^"]*)?")*)>\s*<\/\1>/gim, "<$1$2\/>");
     data = data.replace(/<(MapZone ID="\d*?")(\sObjOffset="[-\d]*?"){2,}?>/gim, "<$1$2>");
@@ -124,17 +124,17 @@ function convertB64ToBinary(b64) {
     return array;
 }
 
-function acefold(foldit) {
-    let editor = ace.edit("textfeld");
+function aceFold(foldit) {
+    let editor = ace.edit("content_xmlarea_textfeld");
 
     if (foldit) {
         editor.getSession().foldAll(1);
 
-        message("info", "Все блоки свернуты!");
+        createMessage("info", "Все блоки свернуты!");
     } else {
         editor.getSession().unfold();
 
-        message("info", "Все блоки развернуты!");
+        createMessage("info", "Все блоки развернуты!");
     }
 }
 
@@ -161,11 +161,11 @@ function download(content, filename, contentType) {
     a.dispatchEvent(clickEvent);
 }
 
-function openglkeyfile() {
-    let input = document.getElementById("glkeyfile").files[0];
+function openGLKeyFile() {
+    let input = document.getElementById("content_menu_block_glkeyfile").files[0];
 
     if (typeof input == "undefined") {
-        message("alert", "Файл не выбран!");
+        createMessage("alert", "Файл не выбран!");
 
         return;
     }
@@ -177,18 +177,18 @@ function openglkeyfile() {
             let content = reader.result;
             let match = content.match(/"data":"(.*?)"/);
 
-            document.getElementById("gluid").value = match[1];
+            document.getElementById("content_menu_block_gluid").value = match[1];
 
-            message("info", "GLUID успешно загружен!");
+            createMessage("info", "GLUID успешно загружен!");
         } catch {
-            message("error", "Ошибка загрузки GLUID, может, не тот файл?");
+            createMessage("error", "Ошибка загрузки GLUID, может, не тот файл?");
         }
     });
 
     reader.readAsText(input);
 }
 
-function savecontent1(input) {
+function saveContent1(input) {
     let savecontent = vkbeautify.xmlmin(input);
 
     savecontent = new TextEncoder().encode(savecontent);
@@ -213,7 +213,7 @@ function savecontent1(input) {
     return output;
 }
 
-function savecontent3(input, key) {
+function saveContent3(input, key) {
     let crc32value = CRC32.buf(input);
     let savecontentlength = input.length;
     let savecontent = pako.deflate(input);
@@ -245,7 +245,7 @@ function savecontent3(input, key) {
     return output;
 }
 
-function savecontent2(input) {
+function saveContent2(input) {
     let outputbuffer = new ArrayBuffer(4);
     let output = new DataView(outputbuffer);
 
@@ -256,11 +256,11 @@ function savecontent2(input) {
     return output;
 }
 
-function closesavefile() {
-    let gluid = document.getElementById("gluid").value;
+function closeSaveFile() {
+    let gluid = document.getElementById("content_menu_block_gluid").value;
 
     if (gluid.length === 0) {
-        message("alert", "Пожалуйста, введите GLUID!");
+        createMessage("alert", "Пожалуйста, введите GLUID!");
 
         return;
     }
@@ -268,31 +268,31 @@ function closesavefile() {
     try {
         let key = convertB64ToBinary(gluid);
         let savecount = 25;
-        let editor = ace.edit("textfeld");
+        let editor = ace.edit("content_xmlarea_textfeld");
         let savecontent = editor.getSession().getValue();
-        let savecountpart = savecontent2(savecount);
+        let savecountpart = saveContent2(savecount);
 
-        savecountpart = savecontent3(savecountpart, key);
+        savecountpart = saveContent3(savecountpart, key);
 
-        let savecontentpart = savecontent1(savecontent);
+        let savecontentpart = saveContent1(savecontent);
 
-        savecontentpart = savecontent3(savecontentpart, key);
+        savecontentpart = saveContent3(savecontentpart, key);
 
-        let sections = savecontent2(2);
+        let sections = saveContent2(2);
 
         download([savecountpart, savecontentpart, sections], "mlp_save_prime.dat");
 
-        message("info", "Файл успешно сохранен!");
+        createMessage("info", "Файл успешно сохранен!");
     } catch {
-        message("error", "Ошибка сохранения файла, может, недопустимые символы?");
+        createMessage("error", "Ошибка сохранения файла, может, недопустимые символы?");
     }
 }
 
-function opensavefile() {
-    let input = document.getElementById("savefile").files[0];
+function openSaveFile() {
+    let input = document.getElementById("content_menu_block_savefile").files[0];
 
     if (typeof input == "undefined") {
-        message("alert", "Файл не выбран!");
+        createMessage("alert", "Файл не выбран!");
 
         return;
     }
@@ -306,15 +306,15 @@ function opensavefile() {
 
                 data = vkbeautify.xml(data);
 
-                let editor = ace.edit("textfeld");
+                let editor = ace.edit("content_xmlarea_textfeld");
 
                 editor.getSession().setValue(data);
 
-                acefold(true);
+                aceFold(true);
 
-                message("info", "Данные загружены! Не забывайте делать резервные копии!");
+                createMessage("info", "Данные загружены! Не забывайте делать резервные копии!");
             } catch {
-                message("error", "Ошибка загрузки сохранения! Возможно, неправильный файл / поврежденный файл / неверный ключ?");
+                createMessage("error", "Ошибка загрузки сохранения! Возможно, неправильный файл / поврежденный файл / неверный ключ?");
             }
         });
 
@@ -323,10 +323,10 @@ function opensavefile() {
         return;
     }
 
-    let gluid = document.getElementById("gluid").value;
+    let gluid = document.getElementById("content_menu_block_gluid").value;
 
     if (gluid.length === 0) {
-        message("alert", "Пожалуйста, введите GLUID!");
+        createMessage("alert", "Пожалуйста, введите GLUID!");
 
         return;
     }
@@ -361,78 +361,78 @@ function opensavefile() {
             data = new Uint8Array(data.buffer, 16);
             data = pako.inflate(data);
             data = new TextDecoder().decode(data);
-            data = xmlclean(data);
+            data = xmlClean(data);
             data = vkbeautify.xml(data);
 
-            let editor = ace.edit("textfeld");
+            let editor = ace.edit("content_xmlarea_textfeld");
 
             editor.getSession().setValue(data);
 
-            acefold(true);
+            aceFold(true);
 
-            message("info", "Данные загружены! Не забывайте делать резервные копии!");
+            createMessage("info", "Данные загружены! Не забывайте делать резервные копии!");
         } catch {
-            message("error", "Ошибка загрузки сохранения! Возможно, неправильный файл / поврежденный файл / неверный ключ?");
+            createMessage("error", "Ошибка загрузки сохранения! Возможно, неправильный файл / поврежденный файл / неверный ключ?");
         }
     });
 
     reader.readAsArrayBuffer(input);
 }
 
-function acebeautify() {
-    let editor = ace.edit("textfeld");
+function aceBeautify() {
+    let editor = ace.edit("content_xmlarea_textfeld");
     let data = editor.getSession().getValue();
 
     data = vkbeautify.xml(data);
 
     editor.getSession().setValue(data);
 
-    acefold(true);
+    aceFold(true);
 
-    message("info", "Текст успешно отформатирован!");
+    createMessage("info", "Текст успешно отформатирован!");
 }
 
-function acewrap() {
-    let editor = ace.edit("textfeld");
-    let ace_wrap = document.getElementById("acewrap");
+function aceWrap() {
+    let editor = ace.edit("content_xmlarea_textfeld");
+    let content_menu_block_acewrap = document.getElementById("content_menu_block_acewrap");
 
-    if (localStorage.getItem("acewrap") === "true") {
-        ace_wrap.checked = false;
+    if (localStorage.getItem("aceWrap") === "true") {
+        content_menu_block_acewrap.checked = false;
 
         editor.getSession().setUseWrapMode(false);
 
-        localStorage.setItem("acewrap", "false");
+        localStorage.setItem("aceWrap", "false");
 
-        message("info", "Перенос строк отключен!");
+        createMessage("info", "Перенос строк отключен!");
 
         return;
     }
 
-    if (!localStorage.getItem("acewrap") || (localStorage.getItem("acewrap") === "false")) {
-        ace_wrap.checked = true;
+    if (!localStorage.getItem("aceWrap") || (localStorage.getItem("aceWrap") === "false")) {
+        content_menu_block_acewrap.checked = true;
 
         editor.getSession().setUseWrapMode(true);
 
-        localStorage.setItem("acewrap", "true");
+        localStorage.setItem("aceWrap", "true");
 
-        message("info", "Перенос строк включен!");
+        createMessage("info", "Перенос строк включен!");
     }
 }
 
-function acefullscreen() {
-    let textfeld = document.getElementById("textfeld");
+function aceFullScreen() {
+    let content_xmlarea_textfeld = document.getElementById("content_xmlarea_textfeld");
 
-    if (textfeld.requestFullscreen) {
-        textfeld.requestFullscreen().then(r => r);
-    } else if (textfeld.mozRequestFullScreen) {
-        textfeld.mozRequestFullScreen();
-    } else if (textfeld.webkitRequestFullscreen) {
-        textfeld.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-    } else if (textfeld.msRequestFullscreen) {
-        textfeld.msRequestFullscreen();
+    if (content_xmlarea_textfeld.requestFullscreen) {
+        content_xmlarea_textfeld.requestFullscreen().then(r => r);
+    } else if (content_xmlarea_textfeld.mozRequestFullScreen) {
+        content_xmlarea_textfeld.mozRequestFullScreen();
+    } else if (content_xmlarea_textfeld.webkitRequestFullscreen) {
+        content_xmlarea_textfeld.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+    } else if (content_xmlarea_textfeld.msRequestFullscreen) {
+        content_xmlarea_textfeld.msRequestFullscreen();
     } else {
-        if (textfeld.webkitEnterFullscreen) {
-            textfeld.webkitEnterFullscreen();
+        if (content_xmlarea_textfeld.webkitEnterFullscreen) {
+            content_xmlarea_textfeld.webkitEnterFullscreen();
         }
     }
 }

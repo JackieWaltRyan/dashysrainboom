@@ -23,110 +23,110 @@
     </head>
     <body>
         <div class="header">
-            <img class="dashy" src="resources/images/dashy.gif" alt="Dashys Rainboom"/>
+            <img class="header_dashy" src="resources/images/dashy.gif" alt="Dashys Rainboom"/>
             <b class="rainbow">Dashys Rainboom</b>
         </div>
         <div class="content">
-            <div id="menu">
+            <div id="content_menu">
                 <b class="rainbow">GLUID:</b><br>
-                <div class="block">
+                <div class="content_menu_block">
                     <label>
                         <b class="rainbow">Загрузите файл gameloft_sharing:</b><br>
-                        <input id="glkeyfile" class="button" type="file"/><br>
-                        <input id="openglkeyfile" class="button" type="button" value="Загрузить"/>
+                        <input id="content_menu_block_glkeyfile" class="content_menu_block_button" type="file"/><br>
+                        <input id="content_menu_block_openglkeyfile" class="content_menu_block_button" type="button" value="Загрузить"/>
                         <script>
-                            let input_openglkeyfile = document.getElementById("openglkeyfile");
+                            let content_menu_block_openglkeyfile = document.getElementById("content_menu_block_openglkeyfile");
                             
-                            input_openglkeyfile.addEventListener("click", () => {
-                                openglkeyfile();
+                            content_menu_block_openglkeyfile.addEventListener("click", () => {
+                                openGLKeyFile();
                             });
                         </script>
                     </label><br>
                     <label>
                         <b class="rainbow">Или вставьте значение data:</b><br>
-                        <div class="button gluid">
-                            <input id="gluid" type="text"/>
+                        <div class="content_menu_block_button content_menu_block_gluid">
+                            <input id="content_menu_block_gluid" type="text"/>
                         </div>
                     </label>
                 </div><hr>
                 <b class="rainbow">Файл сохранения:</b><br>
-                <div class="block">
+                <div class="content_menu_block">
                     <label>
                         <b class="rainbow">Загрузите файл mlp_save_prime.dat или mlp_save_prime.xml:</b><br>
-                        <input id="savefile" class="button" type="file"/><br>
-                        <input id="opensavefile" class="button" type="button" value="Загрузить"/>
+                        <input id="content_menu_block_savefile" class="content_menu_block_button" type="file"/><br>
+                        <input id="content_menu_block_opensavefile" class="content_menu_block_button" type="button" value="Загрузить"/>
                         <script>
-                            let input_opensavefile = document.getElementById("opensavefile");
+                            let content_menu_block_opensavefile = document.getElementById("content_menu_block_opensavefile");
                             
-                            input_opensavefile.addEventListener("click", () => {
-                                opensavefile();
+                            content_menu_block_opensavefile.addEventListener("click", () => {
+                                openSaveFile();
                             });
                         </script>
                     </label><br>
                     <label>
                         <b class="rainbow">Или сохраните текст редактора в файл mlp_save_prime.dat:</b><br>
-                        <input id="closesavefile" class="button" type="button" value="Сохранить"/>
+                        <input id="content_menu_block_closesavefile" class="content_menu_block_button" type="button" value="Сохранить"/>
                         <script>
-                            let input_closesavefile = document.getElementById("closesavefile");
+                            let content_menu_block_closesavefile = document.getElementById("content_menu_block_closesavefile");
                             
-                            input_closesavefile.addEventListener("click", () => {
-                                closesavefile();
+                            content_menu_block_closesavefile.addEventListener("click", () => {
+                                closeSaveFile();
                             });
                         </script>
                     </label>
                 </div><hr>
                 <b class="rainbow">Редактор:</b><br>
-                <div class="block">
-                    <input id="acebeautify" class="button" type="button" value="Форматировать текст"/><br>
+                <div class="content_menu_block">
+                    <input id="content_menu_block_acebeautify" class="content_menu_block_button" type="button" value="Форматировать текст"/><br>
                     <script>
-                        let input_acebeautify = document.getElementById("acebeautify");
+                        let content_menu_block_acebeautify = document.getElementById("content_menu_block_acebeautify");
                         
-                        input_acebeautify.addEventListener("click", () => {
-                            acebeautify();
+                        content_menu_block_acebeautify.addEventListener("click", () => {
+                            aceBeautify();
                         });
                     </script>
-                    <input id="acefoldtrue" class="button" type="button" value="Свернуть всё"/>
+                    <input id="content_menu_block_acefoldtrue" class="content_menu_block_button" type="button" value="Свернуть всё"/>
                     <script>
-                        let input_acefoldtrue = document.getElementById("acefoldtrue");
+                        let content_menu_block_acefoldtrue = document.getElementById("content_menu_block_acefoldtrue");
                         
-                        input_acefoldtrue.addEventListener("click", () => {
-                            acefold(true);
+                        content_menu_block_acefoldtrue.addEventListener("click", () => {
+                            aceFold(true);
                         });
                     </script>
-                    <input id="acefoldfalse" class="button" type="button" value="Развернуть всё"/><br>
+                    <input id="content_menu_block_acefoldfalse" class="content_menu_block_button" type="button" value="Развернуть всё"/><br>
                     <script>
-                        let input_acefoldfalse = document.getElementById("acefoldfalse");
+                        let content_menu_block_acefoldfalse = document.getElementById("content_menu_block_acefoldfalse");
                         
-                        input_acefoldfalse.addEventListener("click", () => {
-                            acefold(false);
+                        content_menu_block_acefoldfalse.addEventListener("click", () => {
+                            aceFold(false);
                         });
                     </script>
-                    <input id="acefullscreen" class="button" type="button" value="Полноэкранный режим"/><br>
+                    <input id="content_menu_block_acefullscreen" class="content_menu_block_button" type="button" value="Полноэкранный режим"/><br>
                     <script>
-                        let input_acefullscreen = document.getElementById("acefullscreen");
+                        let content_menu_block_acefullscreen = document.getElementById("content_menu_block_acefullscreen");
                         
-                        input_acefullscreen.addEventListener("click", () => {
-                            acefullscreen();
+                        content_menu_block_acefullscreen.addEventListener("click", () => {
+                            aceFullScreen();
                         });
                     </script>
-                    <label class="acewrap">
-                        <input id="acewrap" type="checkbox"/>
+                    <label class="content_menu_block_acewrap">
+                        <input id="content_menu_block_acewrap" type="checkbox"/>
                         <script>
-                            let input_acewrap = document.getElementById("acewrap");
+                            let content_menu_block_acewrap = document.getElementById("content_menu_block_acewrap");
                             
-                            input_acewrap.addEventListener("change", () => {
-                                acewrap();
+                            content_menu_block_acewrap.addEventListener("change", () => {
+                                aceWrap();
                             });
                         </script>
                         <span>Перенос строк</span>
                     </label>
                 </div><hr>
             </div>
-            <div class="xmlarea">
-                <div id="textfeld"></div>
+            <div class="content_xmlarea">
+                <div id="content_xmlarea_textfeld"></div>
             </div>
         </div>
-        <div id="message_box"></div>
+        <div id="messages"></div>
     </body>
     <script>
         vkBridge.send("VKWebAppInit", {});
