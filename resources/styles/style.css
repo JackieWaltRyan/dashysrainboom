@@ -92,7 +92,7 @@ hr {
     margin-left: 25px;
 }
 
-.content_menu_button {
+.content_menu_block_button {
     padding: 5px 10px;
     border: none;
     outline: none;
@@ -104,7 +104,7 @@ hr {
     width: min-content;
 }
 
-.content_menu_button:hover {
+.content_menu_block_button:hover {
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     background-size: 400%;
     animation: glowing 20s linear infinite;
