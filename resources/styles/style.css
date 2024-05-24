@@ -24,16 +24,6 @@
     }
 }
 
-@media (min-width: 360px) and (max-width: 720px) {
-    #menu {
-        width: 100%;
-    }
-
-    .xmlarea {
-        width: 100%;
-    }
-}
-
 body {
     margin: 0;
     font-family: celestia, serif;
@@ -147,6 +137,16 @@ hr {
     width: calc(100% - 360px);
     height: 100%;
     box-sizing: border-box;
+}
+
+@media (min-width: 360px) and (max-width: 720px) {
+    #content_menu {
+        width: 100%;
+    }
+
+    .content_xmlarea {
+        width: 100%;
+    }
 }
 
 #content_xmlarea_textfeld {
