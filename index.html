@@ -33,8 +33,8 @@
     </head>
     <body>
         <div class="header">
-            <img class="header_dashy" src="resources/images/dashy.gif" alt="Dashys Rainboom"/>
-            <b class="rainbow">Dashys Rainboom</b>
+            <img class="header_image" src="resources/images/dashy.gif" alt="Dashys Rainboom"/>
+            <b class="header_text rainbow">Dashys Rainboom</b>
         </div>
         <div class="content">
             <div id="content_menu">
@@ -45,9 +45,7 @@
                         <input id="content_menu_block_glkeyfile" class="content_menu_block_button" type="file"/><br>
                         <input id="content_menu_block_openglkeyfile" class="content_menu_block_button" type="button" value="Загрузить"/>
                         <script>
-                            let content_menu_block_openglkeyfile = document.getElementById("content_menu_block_openglkeyfile");
-                            
-                            content_menu_block_openglkeyfile.addEventListener("click", () => {
+                            document.getElementById("content_menu_block_openglkeyfile").addEventListener("click", () => {
                                 openGLKeyFile();
                             });
                         </script>
@@ -66,9 +64,7 @@
                         <input id="content_menu_block_savefile" class="content_menu_block_button" type="file"/><br>
                         <input id="content_menu_block_opensavefile" class="content_menu_block_button" type="button" value="Загрузить"/>
                         <script>
-                            let content_menu_block_opensavefile = document.getElementById("content_menu_block_opensavefile");
-                            
-                            content_menu_block_opensavefile.addEventListener("click", () => {
+                            document.getElementById("content_menu_block_opensavefile").addEventListener("click", () => {
                                 openSaveFile();
                             });
                         </script>
@@ -77,9 +73,7 @@
                         <b class="rainbow">Или сохраните текст редактора в файл mlp_save_prime.dat:</b><br>
                         <input id="content_menu_block_closesavefile" class="content_menu_block_button" type="button" value="Сохранить"/>
                         <script>
-                            let content_menu_block_closesavefile = document.getElementById("content_menu_block_closesavefile");
-                            
-                            content_menu_block_closesavefile.addEventListener("click", () => {
+                            document.getElementById("content_menu_block_closesavefile").addEventListener("click", () => {
                                 closeSaveFile();
                             });
                         </script>
@@ -89,42 +83,32 @@
                 <div class="content_menu_block">
                     <input id="content_menu_block_acebeautify" class="content_menu_block_button" type="button" value="Форматировать текст"/><br>
                     <script>
-                        let content_menu_block_acebeautify = document.getElementById("content_menu_block_acebeautify");
-                        
-                        content_menu_block_acebeautify.addEventListener("click", () => {
+                        document.getElementById("content_menu_block_acebeautify").addEventListener("click", () => {
                             aceBeautify();
                         });
                     </script>
                     <input id="content_menu_block_acefoldtrue" class="content_menu_block_button" type="button" value="Свернуть всё"/>
                     <script>
-                        let content_menu_block_acefoldtrue = document.getElementById("content_menu_block_acefoldtrue");
-                        
-                        content_menu_block_acefoldtrue.addEventListener("click", () => {
+                        document.getElementById("content_menu_block_acefoldtrue").addEventListener("click", () => {
                             aceFold(true);
                         });
                     </script>
                     <input id="content_menu_block_acefoldfalse" class="content_menu_block_button" type="button" value="Развернуть всё"/><br>
                     <script>
-                        let content_menu_block_acefoldfalse = document.getElementById("content_menu_block_acefoldfalse");
-                        
-                        content_menu_block_acefoldfalse.addEventListener("click", () => {
+                        document.getElementById("content_menu_block_acefoldfalse").addEventListener("click", () => {
                             aceFold(false);
                         });
                     </script>
                     <input id="content_menu_block_acefullscreen" class="content_menu_block_button" type="button" value="Полноэкранный режим"/><br>
                     <script>
-                        let content_menu_block_acefullscreen = document.getElementById("content_menu_block_acefullscreen");
-                        
-                        content_menu_block_acefullscreen.addEventListener("click", () => {
+                        document.getElementById("content_menu_block_acefullscreen").addEventListener("click", () => {
                             aceFullScreen();
                         });
                     </script>
                     <label class="content_menu_block_acewrap">
                         <input id="content_menu_block_acewrap" type="checkbox"/>
                         <script>
-                            let content_menu_block_acewrap = document.getElementById("content_menu_block_acewrap");
-                            
-                            content_menu_block_acewrap.addEventListener("change", () => {
+                            document.getElementById("content_menu_block_acewrap").addEventListener("change", () => {
                                 aceWrap();
                             });
                         </script>
@@ -138,7 +122,4 @@
         </div>
         <div id="messages"></div>
     </body>
-    <script>
-        vkBridge.send("VKWebAppInit", {});
-    </script>
 </html>

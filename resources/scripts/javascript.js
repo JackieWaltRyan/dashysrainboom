@@ -71,12 +71,7 @@ function init() {
 }
 
 function aceResize() {
-    let content_menu = document.getElementById("content_menu");
     let content_xmlarea = document.querySelector(".content_xmlarea");
-
-    if (content_xmlarea.scrollHeight < content_menu.scrollHeight) {
-        content_xmlarea.style.minHeight = (content_menu.scrollHeight + "px");
-    }
 
     content_xmlarea.addEventListener("keyup", () => {
         window.addEventListener("beforeunload", (event) => {
@@ -95,14 +90,6 @@ if (document.readyState === "loading") {
     init();
     aceResize();
 }
-
-window.addEventListener("resize", () => {
-    aceResize();
-});
-
-window.addEventListener("scroll", () => {
-    aceResize();
-});
 
 function xmlClean(data) {
     data = data.replace(/<IapMap>[^]+<\/IapMap>/gim, "<IapMap/>");

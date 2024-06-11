@@ -24,6 +24,28 @@
     }
 }
 
+*::-webkit-scrollbar, *::-webkit-scrollbar:vertical, *::-webkit-scrollbar:horizontal {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-corner, *::-webkit-scrollbar-track, *::-webkit-scrollbar-track-piece {
+    background-color: #02162e;
+}
+
+*::-webkit-scrollbar-button {
+    display: none;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #575662;
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: #6900ff;
+}
+
 body {
     margin: 0;
     font-family: celestia, serif;
@@ -31,36 +53,44 @@ body {
     background-color: #02162e;
 }
 
-.rainbow {
-    background: linear-gradient(to right, #672f89, #1e98d3, #62bc4d, #fdf6af, #f37033, #ee4144);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-}
-
 .header {
     background-color: #9edbf9;
     width: 100%;
     height: 50px;
-    text-align: center;
     font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.header_dashy {
-    vertical-align: middle;
+.header_image {
+    margin-right: 10px;
+}
+
+.header_text {
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.rainbow {
+    background: linear-gradient(to right, #672f89, #1e98d3, #62bc4d, #fdf6af, #f37033, #ee4144);
+    background-clip: text;
+    color: transparent;
 }
 
 .content {
+    width: 100%;
+    max-height: 100vh;
+    height: 100vh;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
+    align-content: flex-start;
     justify-content: flex-start;
     align-items: flex-start;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    position: absolute;
-    width: 100%;
-    height: calc(100% - 50px);
 }
 
 #content_menu {
@@ -70,6 +100,8 @@ body {
     padding-top: 10px;
     padding-left: 10px;
     box-sizing: border-box;
+    overflow: auto;
+    height: 100%;
 }
 
 hr {
@@ -120,9 +152,7 @@ hr {
     background-size: 400%;
     animation: glowing 20s linear infinite;
     background-clip: text;
-    -webkit-background-clip: text;
     color: transparent;
-    -webkit-text-fill-color: transparent;
 }
 
 #content_menu_block_acewrap {
@@ -133,7 +163,6 @@ hr {
     background-color: #9edbf9;
     position: relative;
     min-width: 360px;
-    min-height: 550px;
     width: calc(100% - 360px);
     height: 100%;
     box-sizing: border-box;
@@ -142,6 +171,7 @@ hr {
 @media (min-width: 360px) and (max-width: 720px) {
     #content_menu {
         width: 100%;
+        height: auto;
     }
 
     .content_xmlarea {
@@ -167,6 +197,7 @@ hr {
     align-items: center;
     z-index: 1000;
     position: fixed;
+    top: 50px;
     width: 100%;
     pointer-events: none;
     user-select: none;
