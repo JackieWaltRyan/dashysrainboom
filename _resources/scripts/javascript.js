@@ -68,6 +68,26 @@ function init() {
         content_menu_block_acewrap.checked = false;
         editor.getSession().setUseWrapMode(false);
     }
+
+    editor.session.on("changeAnnotation", () => {
+        let annotations = editor.session.getAnnotations();
+
+        if (annotations.length > 0) {
+            let trigger = false;
+
+            annotations.forEach((ann, index) => {
+                if (ann["text"].includes("BranchHeal(Fluttershy)")) {
+                    annotations.splice(index, 1);
+
+                    trigger = true;
+                }
+            });
+
+            if (trigger) {
+                editor.session.setAnnotations(annotations);
+            }
+        }
+    });
 }
 
 function aceResize() {
