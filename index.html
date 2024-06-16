@@ -6,34 +6,24 @@
         <meta name="description" content="Dashys Rainboom"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="theme-color" content="#02162e"/>
-        <link rel="icon" type="image/png" sizes="192x192" href="_resources/images/icons/android-icon-192x192.png"/>
-        <link rel="icon" type="image/png" sizes="96x96" href="_resources/images/icons/favicon-96x96.png"/>
-        <link rel="icon" type="image/png" sizes="32x32" href="_resources/images/icons/favicon-32x32.png"/>
-        <link rel="icon" type="image/png" sizes="16x16" href="_resources/images/icons/favicon-16x16.png"/>
-        <link rel="manifest" href="_resources/images/icons/manifest.json"/>
-        <link type="text/css" rel="stylesheet" href="_resources/styles/style.css"/>
-        <script type="text/javascript" src="_resources/scripts/ace/ace.js"></script>
-        <script type="text/javascript" src="_resources/scripts/ace/ext-language_tools.js"></script>
-        <script type="text/javascript" src="_resources/scripts/xxtea.js"></script>
-        <script type="text/javascript" src="_resources/scripts/crc32.js"></script>
-        <script type="text/javascript" src="_resources/scripts/pako.min.js"></script>
-        <script type="text/javascript" src="_resources/scripts/vkbeautify.js"></script>
-        <script type="text/javascript" src="_resources/scripts/javascript.js"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-35RJCF1F6W"></script>
-        <script>
-            window.dataLayer = (window.dataLayer || []);
-            
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            
-            gtag("js", new Date());
-            gtag("config", "G-35RJCF1F6W");
-        </script>
+        <link rel="icon" type="image/png" sizes="192x192" href="./_resources/images/icons/android-icon-192x192.png"/>
+        <link rel="icon" type="image/png" sizes="96x96" href="./_resources/images/icons/favicon-96x96.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="./_resources/images/icons/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="./_resources/images/icons/favicon-16x16.png"/>
+        <link rel="manifest" href="./_resources/images/icons/manifest.json"/>
+        <link type="text/css" rel="stylesheet" href="./_resources/styles/style.css"/>
+        <script type="text/javascript" src="./_resources/scripts/ace/ace.js"></script>
+        <script type="text/javascript" src="./_resources/scripts/ace/ext-language_tools.js"></script>
+        <script type="text/javascript" src="./_resources/scripts/xxtea.js"></script>
+        <script type="text/javascript" src="./_resources/scripts/crc32.js"></script>
+        <script type="text/javascript" src="./_resources/scripts/pako.min.js"></script>
+        <script type="text/javascript" src="./_resources/scripts/vkbeautify.js"></script>
+        <script type="text/javascript" src="./_resources/scripts/utils.js"></script>
+        <script type="text/javascript" src="./_resources/scripts/javascript.js"></script>
     </head>
     <body>
         <div class="header">
-            <img class="header_image" src="_resources/images/dashy.gif" alt="Dashys Rainboom"/>
+            <img class="header_image" src="./_resources/images/dashy.gif" alt="Dashys Rainboom"/>
             <b class="header_text rainbow">Dashys Rainboom</b>
         </div>
         <div class="content">
@@ -44,11 +34,6 @@
                         <b class="rainbow">Загрузите файл gameloft_sharing:</b><br>
                         <input id="content_menu_block_glkeyfile" class="content_menu_block_button" type="file"/><br>
                         <input id="content_menu_block_openglkeyfile" class="content_menu_block_button" type="button" value="Загрузить"/>
-                        <script>
-                            document.getElementById("content_menu_block_openglkeyfile").addEventListener("click", () => {
-                                openGLKeyFile();
-                            });
-                        </script>
                     </label><br>
                     <label>
                         <b class="rainbow">Или вставьте значение data:</b><br>
@@ -63,55 +48,20 @@
                         <b class="rainbow">Загрузите файл mlp_save_prime.dat или mlp_save_prime.xml:</b><br>
                         <input id="content_menu_block_savefile" class="content_menu_block_button" type="file"/><br>
                         <input id="content_menu_block_opensavefile" class="content_menu_block_button" type="button" value="Загрузить"/>
-                        <script>
-                            document.getElementById("content_menu_block_opensavefile").addEventListener("click", () => {
-                                openSaveFile();
-                            });
-                        </script>
                     </label><br>
                     <label>
                         <b class="rainbow">Или сохраните текст редактора в файл mlp_save_prime.dat:</b><br>
                         <input id="content_menu_block_closesavefile" class="content_menu_block_button" type="button" value="Сохранить"/>
-                        <script>
-                            document.getElementById("content_menu_block_closesavefile").addEventListener("click", () => {
-                                closeSaveFile();
-                            });
-                        </script>
                     </label>
                 </div><hr>
                 <b class="rainbow">Редактор:</b><br>
                 <div class="content_menu_block">
                     <input id="content_menu_block_acebeautify" class="content_menu_block_button" type="button" value="Форматировать текст"/><br>
-                    <script>
-                        document.getElementById("content_menu_block_acebeautify").addEventListener("click", () => {
-                            aceBeautify();
-                        });
-                    </script>
                     <input id="content_menu_block_acefoldtrue" class="content_menu_block_button" type="button" value="Свернуть всё"/>
-                    <script>
-                        document.getElementById("content_menu_block_acefoldtrue").addEventListener("click", () => {
-                            aceFold(true);
-                        });
-                    </script>
                     <input id="content_menu_block_acefoldfalse" class="content_menu_block_button" type="button" value="Развернуть всё"/><br>
-                    <script>
-                        document.getElementById("content_menu_block_acefoldfalse").addEventListener("click", () => {
-                            aceFold(false);
-                        });
-                    </script>
                     <input id="content_menu_block_acefullscreen" class="content_menu_block_button" type="button" value="Полноэкранный режим"/><br>
-                    <script>
-                        document.getElementById("content_menu_block_acefullscreen").addEventListener("click", () => {
-                            aceFullScreen();
-                        });
-                    </script>
                     <label class="content_menu_block_acewrap">
                         <input id="content_menu_block_acewrap" type="checkbox"/>
-                        <script>
-                            document.getElementById("content_menu_block_acewrap").addEventListener("change", () => {
-                                aceWrap();
-                            });
-                        </script>
                         <span>Перенос строк</span>
                     </label>
                 </div><hr>
