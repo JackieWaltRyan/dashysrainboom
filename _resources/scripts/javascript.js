@@ -86,10 +86,14 @@ function init() {
                 let trigger = false;
 
                 annotations.forEach((ann, index) => {
-                    if (ann["text"].includes("BranchHeal(Fluttershy)")) {
-                        annotations.splice(index, 1);
+                    try {
+                        if (ann["text"].includes("BranchHeal(Fluttershy)")) {
+                            annotations.splice(index, 1);
 
-                        trigger = true;
+                            trigger = true;
+                        }
+                    } catch (e) {
+                        console.error(e);
                     }
                 });
 
@@ -122,7 +126,11 @@ function convertB64ToBinary(b64) {
         let array = new Uint8Array(new ArrayBuffer(rawLength));
 
         for (let i = 0; (i < rawLength); i++) {
-            array[i] = raw.charCodeAt(i);
+            try {
+                array[i] = raw.charCodeAt(i);
+            } catch (e) {
+                console.error(e);
+            }
         }
 
         return array;
