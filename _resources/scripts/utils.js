@@ -1,80 +1,96 @@
 function createElement(tag, params = {}, actions = () => {
 }) {
-    let el = document.createElement(tag);
+    try {
+        let el = document.createElement(tag);
 
-    for (let name in params) {
-        try {
-            el.setAttribute(name, params[name]);
-        } catch (e) {
-            console.log(e);
+        for (let name in params) {
+            try {
+                el.setAttribute(name, params[name]);
+            } catch (e) {
+                console.log(e);
+            }
         }
+
+        actions(el);
+
+        return el;
+    } catch (e) {
+        console.error(e);
     }
-
-    actions(el);
-
-    return el;
 }
 
 function createMessage(type, text) {
-    let messages = document.getElementById("messages");
+    try {
+        let messages = document.getElementById("messages");
 
-    let message = createElement("div", {
-        class: ("messages_message messages_message_" + type)
-    }, (el) => {
-        el.innerText = text;
-    });
+        let message = createElement("div", {
+            class: ("messages_message messages_message_" + type)
+        }, (el) => {
+            el.innerText = text;
+        });
 
-    messages.appendChild(message);
+        messages.appendChild(message);
 
-    setTimeout(() => {
-        message.remove();
-    }, 3000);
+        setTimeout(() => {
+            message.remove();
+        }, 3000);
+    } catch (e) {
+        console.error(e);
+    }
 }
 
 function loadGoogle() {
-    let tag = "G-35RJCF1F6W";
+    try {
+        let tag = "G-35RJCF1F6W";
 
-    document.querySelector("head").appendChild(createElement("script", {
-        type: "text/javascript",
-        src: ("https://www.googletagmanager.com/gtag/js?id=" + tag)
-    }, (el) => {
-        el.addEventListener("load", () => {
-            window.dataLayer = (window.dataLayer || []);
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-
-            gtag("js", new Date());
-            gtag("config", tag);
-        });
-
-        el.addEventListener("error", () => {
-            setTimeout(() => {
-                loadGoogle();
-            }, 1000);
-        });
-    }));
-}
-
-function loadEruda() {
-    window.getURL = (window.getURL || new URL(location.href));
-
-    if (getURL.searchParams.has("dev")) {
         document.querySelector("head").appendChild(createElement("script", {
             type: "text/javascript",
-            src: "/_resources/scripts/eruda.min.js"
+            src: ("https://www.googletagmanager.com/gtag/js?id=" + tag)
         }, (el) => {
             el.addEventListener("load", () => {
-                eruda.init();
+                window.dataLayer = (window.dataLayer || []);
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag("js", new Date());
+                gtag("config", tag);
             });
 
             el.addEventListener("error", () => {
                 setTimeout(() => {
-                    loadEruda();
+                    loadGoogle();
                 }, 1000);
             });
         }));
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+function loadEruda() {
+    try {
+        window.getURL = (window.getURL || new URL(location.href));
+
+        if (getURL.searchParams.has("dev")) {
+            document.querySelector("head").appendChild(createElement("script", {
+                type: "text/javascript",
+                src: "/_resources/scripts/eruda.min.js"
+            }, (el) => {
+                el.addEventListener("load", () => {
+                    eruda.init();
+                });
+
+                el.addEventListener("error", () => {
+                    setTimeout(() => {
+                        loadEruda();
+                    }, 1000);
+                });
+            }));
+        }
+    } catch (e) {
+        console.error(e);
     }
 }
 
