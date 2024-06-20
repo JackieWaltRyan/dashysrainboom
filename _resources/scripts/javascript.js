@@ -102,6 +102,12 @@ function init() {
                 }
             }
         });
+
+        window.addEventListener("scroll", () => {
+           if (content_xmlarea.offsetHeight > innerHeight) {
+               content_xmlarea.style.height = (innerHeight + "px");
+           }
+        });
     } catch (e) {
         console.error(e);
     }
