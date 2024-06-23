@@ -104,7 +104,7 @@ function init() {
         });
 
         window.addEventListener("scroll", () => {
-           if (content_xmlarea.offsetHeight > innerHeight) {
+           if (content_xmlarea.offsetHeight !== innerHeight) {
                content_xmlarea.style.height = (innerHeight + "px");
            }
         });
