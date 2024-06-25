@@ -296,3 +296,12 @@ hr {
 .messages_message_error {
     background: red;
 }
+
+.statistic {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+}

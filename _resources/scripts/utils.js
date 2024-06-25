@@ -94,6 +94,67 @@ function loadEruda() {
     }
 }
 
+function strToPoint(str) {
+    try {
+        str = str.toString();
+
+        let res = "";
+
+        if (str.length > 3) {
+            for (let i = 0; (i < str.length); i += 3) {
+                res = (((str.substring((str.length - i - 3), (str.length - i))) + ".") + res);
+            }
+
+            res = res.slice(0, -1);
+        }
+
+        return (res || str);
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+function secondsToTime(sec) {
+    try {
+        sec = Math.floor(parseFloat(sec));
+
+        let seconds = (sec % 60);
+        let minutes = (Math.floor(sec / 60) % 60);
+        let hours = (Math.floor(sec / 3600) % 24);
+        let days = (Math.floor(sec / 86400) % 30);
+        let mounth = (Math.floor(sec / 2629743) % 12);
+        let years = Math.floor(sec / 31556926);
+
+        let padSeconds = seconds.toString().padStart(2, "0");
+        let padMinutes = minutes.toString().padStart(2, "0");
+        let padHours = hours.toString().padStart(2, "0");
+
+        return (
+            (years > 0) ? (years + " год, " + mounth + " месяц, " + days + " день, " + padHours + ":" + padMinutes + ":" + padSeconds) : (
+                (mounth > 0) ? (mounth + " месяц, " + days + " день, " + padHours + ":" + padMinutes + ":" + padSeconds) : (
+                    (days > 0) ? (days + " день, " + padHours + ":" + padMinutes + ":" + padSeconds) : (
+                        padHours + ":" + padMinutes + ":" + padSeconds
+                    )
+                )
+            )
+        );
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+function unixToTime(unix) {
+    try {
+        unix = parseInt(unix);
+
+        let date = new Date(unix * 1000);
+
+        return date.toLocaleString();
+    } catch (e) {
+        console.error(e);
+    }
+}
+
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
         loadGoogle();

@@ -104,9 +104,15 @@ function init() {
         });
 
         window.addEventListener("scroll", () => {
-           if (content_xmlarea.offsetHeight !== innerHeight) {
-               content_xmlarea.style.height = (innerHeight + "px");
-           }
+            if (content_xmlarea.offsetHeight !== innerHeight) {
+                content_xmlarea.style.height = (innerHeight + "px");
+            }
+        });
+
+        editor.session.on("change", () => {
+            setTimeout(() => {
+                statistic().then(r => r);
+            }, 0);
         });
     } catch (e) {
         console.error(e);
