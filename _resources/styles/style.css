@@ -101,8 +101,8 @@ body {
 }
 
 .rainbow {
-    background: -webkit-gradient(linear, left top, right top, from(#672f89), color-stop(#1e98d3), color-stop(#62bc4d), color-stop(#fdf6af), color-stop(#f37033), to(#ee4144));
     background: -o-linear-gradient(left, #672f89, #1e98d3, #62bc4d, #fdf6af, #f37033, #ee4144);
+    background: -webkit-gradient(linear, left top, right top, from(#672f89), color-stop(#1e98d3), color-stop(#62bc4d), color-stop(#fdf6af), color-stop(#f37033), to(#ee4144));
     background: linear-gradient(to right, #672f89, #1e98d3, #62bc4d, #fdf6af, #f37033, #ee4144);
     -webkit-background-clip: text;
     background-clip: text;
@@ -298,10 +298,21 @@ hr {
 }
 
 .statistic {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    -ms-flex-line-pack: start;
     align-content: flex-start;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: flex-start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
 }
