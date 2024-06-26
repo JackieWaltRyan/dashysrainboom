@@ -665,9 +665,23 @@ async function statistic() {
             }
 
             try {
-                if (saveData["mlp_save"]["playerdata"]["@_createdate"]) {
+                let times = [];
+
+                if (saveData["mlp_save"]["playerdata"]["@_geolocationprompttime"]) {
+                    times.push(parseInt(saveData["mlp_save"]["playerdata"]["@_geolocationprompttime"]));
+                }
+
+                if (saveData["mlp_save"]["playerdata"]["rating"]["@_timeratedgame"]) {
+                    times.push(parseInt(saveData["mlp_save"]["playerdata"]["rating"]["@_timeratedgame"]));
+                }
+
+                if (saveData["mlp_save"]["playerdata"]["rateusmanager"]["@_starttime"]) {
+                    times.push(parseInt(saveData["mlp_save"]["playerdata"]["rateusmanager"]["@_starttime"]));
+                }
+
+                if (times.length > 0) {
                     el.appendChild(createElement("span", {}, (el2) => {
-                        el2.innerText = ("Дата начала игры: " + unixToTime(saveData["mlp_save"]["playerdata"]["@_createdate"]));
+                        el2.innerText = ("Дата начала игры: " + unixToTime(Math.min(...times)));
                     }));
                 }
             } catch (e) {
