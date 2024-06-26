@@ -1,3 +1,5 @@
+let statisticTimeout = null;
+
 function init() {
     try {
         document.getElementById("content_menu_block_openglkeyfile").addEventListener("click", () => {
@@ -110,9 +112,11 @@ function init() {
         });
 
         editor.session.on("change", () => {
-            setTimeout(() => {
+            clearTimeout(statisticTimeout);
+
+            statisticTimeout = setTimeout(() => {
                 statistic().then(r => r);
-            }, 0);
+            }, 2000);
         });
     } catch (e) {
         console.error(e);

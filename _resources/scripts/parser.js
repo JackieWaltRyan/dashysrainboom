@@ -7,7 +7,7 @@ let categoriesList = [
     "Дорожки",
     "Коллекции",
     "Костюмы",
-    "Магазины",
+    "Магазины и Дома",
     "Метки",
     "Персонажи",
     "Питомцы",
@@ -289,7 +289,7 @@ async function parseSave(saveData) {
                     }
                 }
 
-                if (cat === "Магазины") {
+                if (cat === "Магазины и Дома") {
                     try {
                         saveData["mlp_save"]["playerdata"]["storage"]["storeditem"].forEach((element) => {
                             try {
@@ -599,7 +599,8 @@ async function statistic() {
                     "totem",
                     "blueprint",
                     "lottodata",
-                    "conversion"
+                    "conversion",
+                    "song_timer"
                 ].includes(name);
             }
         });
@@ -657,6 +658,36 @@ async function statistic() {
                 if (saveData["mlp_save"]["playerdata"]["uploadtocloud"]["@_uploadtocloudlasttime"]) {
                     el.appendChild(createElement("span", {}, (el2) => {
                         el2.innerText = ("Дата сохранения в облако: " + unixToTime(saveData["mlp_save"]["playerdata"]["uploadtocloud"]["@_uploadtocloudlasttime"]));
+                    }));
+                }
+            } catch (e) {
+                console.error(e);
+            }
+
+            try {
+                if (saveData["mlp_save"]["playerdata"]["@_createdate"]) {
+                    el.appendChild(createElement("span", {}, (el2) => {
+                        el2.innerText = ("Дата начала игры: " + unixToTime(saveData["mlp_save"]["playerdata"]["@_createdate"]));
+                    }));
+                }
+            } catch (e) {
+                console.error(e);
+            }
+
+            try {
+                if (saveData["mlp_save"]["playerdata"]["@_totaltimeplayed"]) {
+                    el.appendChild(createElement("span", {}, (el2) => {
+                        el2.innerText = ("Общее время игры: " + secondsToTime(saveData["mlp_save"]["playerdata"]["@_totaltimeplayed"]));
+                    }));
+                }
+            } catch (e) {
+                console.error(e);
+            }
+
+            try {
+                if (saveData["mlp_save"]["playerdata"]["@_sessioncount"]) {
+                    el.appendChild(createElement("span", {}, (el2) => {
+                        el2.innerText = ("Заходов в игру: " + strToPoint(saveData["mlp_save"]["playerdata"]["@_sessioncount"]));
                     }));
                 }
             } catch (e) {
@@ -850,9 +881,29 @@ async function statistic() {
             }
 
             try {
+                if (saveData["mlp_save"]["playerdata"]["tasktokens"]["@_token_lottery"]) {
+                    el.appendChild(createElement("span", {}, (el2) => {
+                        el2.innerText = ("Счастливые монетки: " + strToPoint(saveData["mlp_save"]["playerdata"]["tasktokens"]["@_token_lottery"]));
+                    }));
+                }
+            } catch (e) {
+                console.error(e);
+            }
+
+            try {
                 if (saveData["mlp_save"]["arena"]["@_currency"]) {
                     el.appendChild(createElement("span", {}, (el2) => {
                         el2.innerText = ("Волшебные монеты: " + strToPoint(saveData["mlp_save"]["arena"]["@_currency"]));
+                    }));
+                }
+            } catch (e) {
+                console.error(e);
+            }
+
+            try {
+                if (saveData["mlp_save"]["dailydata"]["@_daily_coins"]) {
+                    el.appendChild(createElement("span", {}, (el2) => {
+                        el2.innerText = ("Ежедневные цели: " + strToPoint(saveData["mlp_save"]["dailydata"]["@_daily_coins"]));
                     }));
                 }
             } catch (e) {
@@ -1058,6 +1109,41 @@ async function statistic() {
                 el.appendChild(createElement("b", {
                     class: "rainbow"
                 }, (el2) => {
+                    el2.innerText = ("Пища животных:");
+                }));
+
+                el.appendChild(createElement("div", {
+                    class: "content_menu_block statistic"
+                }, (el2) => {
+                    if (saveData["mlp_save"]["playerdata"]["foodtokens"]) {
+                        let foods = {
+                            "@_consumable_item_animalfarm_barley": "Мешок зерна",
+                            "@_consumable_item_animalfarm_cabbage": "Мешок капусты",
+                            "@_consumable_item_animalfarm_carrot": "Мешок морковки",
+                            "@_consumable_item_animalfarm_corn": "Мешок кукурузы"
+                        };
+
+                        Object.keys(foods).forEach((food) => {
+                            try {
+                                el2.appendChild(createElement("span", {}, (el3) => {
+                                    el3.innerText = (foods[food] + ": " + strToPoint(saveData["mlp_save"]["playerdata"]["foodtokens"][food]));
+                                }));
+                            } catch (e) {
+                                console.error(e);
+                            }
+                        });
+                    }
+                }));
+            } catch (e) {
+                console.error(e);
+            }
+
+            el.appendChild(createElement("br"));
+
+            try {
+                el.appendChild(createElement("b", {
+                    class: "rainbow"
+                }, (el2) => {
                     el2.innerText = ("Курс обмена МА и БИ:");
                 }));
 
@@ -1128,6 +1214,16 @@ async function statistic() {
                 console.error(e);
             }
 
+            try {
+                if (saveData["mlp_save"]["playerdata"]["@_ballgamehighscore"]) {
+                    el.appendChild(createElement("span", {}, (el2) => {
+                        el2.innerText = ("Лучший счет в мячик: " + strToPoint(saveData["mlp_save"]["playerdata"]["@_ballgamehighscore"]));
+                    }));
+                }
+            } catch (e) {
+                console.error(e);
+            }
+
             el.appendChild(createElement("br"));
 
             try {
@@ -1155,6 +1251,48 @@ async function statistic() {
                             el2.appendChild(createElement("span", {}, (el3) => {
                                 el3.innerText = ("Общее количество: " + strToPoint(saveData["mlp_save"]["playerdata"]["minecart"]["@_accumulated_score"]));
                             }));
+                        }
+                    } catch (e) {
+                        console.error(e);
+                    }
+                }));
+            } catch (e) {
+                console.error(e);
+            }
+
+            el.appendChild(createElement("br"));
+
+            try {
+                el.appendChild(createElement("b", {
+                    class: "rainbow"
+                }, (el2) => {
+                    el2.innerText = ("Девочки Эквестрии:");
+                }));
+
+                el.appendChild(createElement("div", {
+                    class: "content_menu_block statistic"
+                }, (el2) => {
+                    try {
+                        if (saveData["mlp_save"]["sololeaderboard"]["leaderboard"]) {
+                            let songs = {
+                                "regular_eg_song1": "Вступление",
+                                "regular_eg_song2": "Странный мир",
+                                "regular_eg_song3": "Шире шаг",
+                                "regular_eg_song4": "Музыка в кафе",
+                                "regular_eg_song5": "Пойдем со мной"
+                            };
+
+                            saveData["mlp_save"]["sololeaderboard"]["leaderboard"].forEach((lb) => {
+                                try {
+                                    if (lb["@_lbname"] in songs) {
+                                        el2.appendChild(createElement("span", {}, (el3) => {
+                                            el3.innerText = (songs[lb["@_lbname"]] + ": " + strToPoint(lb["@_lastacceptedscore"]));
+                                        }));
+                                    }
+                                } catch (e) {
+                                    console.error(e);
+                                }
+                            });
                         }
                     } catch (e) {
                         console.error(e);
@@ -1308,6 +1446,68 @@ async function statistic() {
             } catch (e) {
                 console.error(e);
             }
+
+            el.appendChild(createElement("br"));
+
+            try {
+                el.appendChild(createElement("b", {
+                    class: "rainbow"
+                }, (el2) => {
+                    el2.innerText = ("Девочки Эквестрии:");
+                }));
+
+                el.appendChild(createElement("div", {
+                    class: "content_menu_block statistic"
+                }, (el2) => {
+                    try {
+                        if (saveData["mlp_save"]["playerdata"]["equestria_girl"]["@_uptime"]) {
+                            el2.appendChild(createElement("span", {}, (el3) => {
+                                el3.innerText = ("Наиграно времени: " + secondsToTime(saveData["mlp_save"]["playerdata"]["equestria_girl"]["@_uptime"]));
+                            }));
+                        }
+                    } catch (e) {
+                        console.error(e);
+                    }
+
+                    el2.appendChild(createElement("br"));
+
+                    el2.appendChild(createElement("b", {
+                        class: "rainbow"
+                    }, (el3) => {
+                        el3.innerText = ("Таймер:");
+                    }));
+
+                    el2.appendChild(createElement("div", {
+                        class: "content_menu_block statistic"
+                    }, (el3) => {
+                        try {
+                            if (saveData["mlp_save"]["playerdata"]["equestria_girl"]["song_timer"]) {
+                                let songs = {
+                                    0: "Вступление",
+                                    1: "Странный мир",
+                                    2: "Шире шаг",
+                                    3: "Музыка в кафе",
+                                    4: "Пойдем со мной"
+                                };
+
+                                saveData["mlp_save"]["playerdata"]["equestria_girl"]["song_timer"].forEach((song, index) => {
+                                    try {
+                                        el3.appendChild(createElement("span", {}, (el4) => {
+                                            el4.innerText = (songs[index] + ": " + secondsToTime(song["@_timer"]));
+                                        }));
+                                    } catch (e) {
+                                        console.error(e);
+                                    }
+                                });
+                            }
+                        } catch (e) {
+                            console.error(e);
+                        }
+                    }));
+                }));
+            } catch (e) {
+                console.error(e);
+            }
         }));
 
         importData.appendChild(createElement("br"));
@@ -1358,6 +1558,8 @@ async function statistic() {
                 console.error(e);
             }
         }));
+
+        createMessage("info", "Информация обновлена");
     } catch (e) {
         console.error(e);
     }
