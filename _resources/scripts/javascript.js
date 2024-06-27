@@ -3,7 +3,9 @@ let statisticTimeout = null;
 function init() {
     try {
         if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("./_resources/scripts/sw.js")
+            navigator.serviceWorker.register("./_resources/scripts/sw.js", {
+                scope: "./"
+            }).then(r => r);
         }
 
         document.getElementById("content_menu_block_openglkeyfile").addEventListener("click", () => {
