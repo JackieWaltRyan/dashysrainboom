@@ -19,6 +19,42 @@ let categoriesList = [
     "Фоны"
 ];
 
+let parser = new XMLParser({
+    ignoreAttributes: false,
+    allowBooleanAttributes: true,
+
+    transformTagName: (tagName) => {
+        return tagName.toLowerCase();
+    },
+    transformAttributeName: (attributeName) => {
+        return attributeName.toLowerCase();
+    },
+
+    isArray: (name) => {
+        return [
+            "profileavataritemidowned",
+            "profileavatarframeitemidowned",
+            "playercardbackgrounditemidowned",
+            "playercardbackgroundframeitemidowned",
+            "playercardcutiemarkitemidowned",
+            "ownedtheme",
+            "ownedrbp",
+            "storeditem",
+            "mapzone",
+            "object",
+            "altpony",
+            "ownpet",
+            "item",
+            "collection",
+            "totem",
+            "blueprint",
+            "lottodata",
+            "conversion",
+            "song_timer"
+        ].includes(name);
+    }
+});
+
 async function loadDataFile() {
     try {
         let xhr = new XMLHttpRequest();
@@ -569,49 +605,13 @@ async function statistic() {
 
         let editor = ace.edit("content_xmlarea_textfeld");
 
-        let parser = new XMLParser({
-            ignoreAttributes: false,
-            allowBooleanAttributes: true,
-
-            transformTagName: (tagName) => {
-                return tagName.toLowerCase();
-            },
-            transformAttributeName: (attributeName) => {
-                return attributeName.toLowerCase();
-            },
-
-            isArray: (name) => {
-                return [
-                    "profileavataritemidowned",
-                    "profileavatarframeitemidowned",
-                    "playercardbackgrounditemidowned",
-                    "playercardbackgroundframeitemidowned",
-                    "playercardcutiemarkitemidowned",
-                    "ownedtheme",
-                    "ownedrbp",
-                    "storeditem",
-                    "mapzone",
-                    "object",
-                    "altpony",
-                    "ownpet",
-                    "item",
-                    "collection",
-                    "totem",
-                    "blueprint",
-                    "lottodata",
-                    "conversion",
-                    "song_timer"
-                ].includes(name);
-            }
-        });
-
         let saveData = parser.parse(editor.getSession().getValue());
 
         console.log(saveData);
 
         let parseData = await parseSave(saveData);
 
-        let importData = document.getElementById("statistic");
+        let importData = document.getElementById("statistic_root");
 
         importData.innerHTML = "";
 

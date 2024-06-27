@@ -2,12 +2,6 @@ let statisticTimeout = null;
 
 function init() {
     try {
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("./_resources/scripts/sw.js", {
-                scope: "./"
-            }).then(r => r);
-        }
-
         document.getElementById("content_menu_block_openglkeyfile").addEventListener("click", () => {
             openGLKeyFile();
         });
@@ -114,6 +108,21 @@ function init() {
         window.addEventListener("scroll", () => {
             if (content_xmlarea.offsetHeight !== innerHeight) {
                 content_xmlarea.style.height = (innerHeight + "px");
+            }
+        });
+
+        let statisticClose = document.getElementById("statistic_close");
+        let statisticRoot = document.getElementById("statistic_root");
+
+        statisticClose.addEventListener("click", () => {
+            if (statisticRoot.style.display === "none") {
+                statisticRoot.style.display = "flex";
+
+                statisticClose.innerText = "[скрыть]";
+            } else {
+                statisticRoot.style.display = "none";
+
+                statisticClose.innerText = "[показать]";
             }
         });
 
