@@ -2,6 +2,10 @@ let statisticTimeout = null;
 
 function init() {
     try {
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("./_resources/scripts/sw.js")
+        }
+
         document.getElementById("content_menu_block_openglkeyfile").addEventListener("click", () => {
             openGLKeyFile();
         });
