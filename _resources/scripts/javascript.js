@@ -1,4 +1,5 @@
 let statisticTimeout = null;
+let statisticTrigger = true;
 
 function init() {
     try {
@@ -119,19 +120,25 @@ function init() {
                 statisticRoot.style.display = "flex";
 
                 statisticClose.innerText = "[скрыть]";
+
+                statisticTrigger = true;
             } else {
                 statisticRoot.style.display = "none";
 
                 statisticClose.innerText = "[показать]";
+
+                statisticTrigger = false;
             }
         });
 
         editor.session.on("change", () => {
             clearTimeout(statisticTimeout);
 
-            statisticTimeout = setTimeout(() => {
-                statistic().then(r => r);
-            }, 2000);
+            if (statisticTrigger) {
+                statisticTimeout = setTimeout(() => {
+                    statistic();
+                }, 2000);
+            }
         });
     } catch (e) {
         console.error(e);
